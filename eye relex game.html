@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eye Relaxation Game</title>
+  <style>
+    body { text-align: center; margin: 50px; font-family: Arial, sans-serif; }
+    .circle { width: 50px; height: 50px; border-radius: 50%; position: absolute; background-color: #3498db; }
+    #message { margin-top: 20px; font-size: 20px; color: #2c3e50; }
+  </style>
+</head>
+<body>
+  <h1>Eye Relaxation Game</h1>
+  <p>Follow the blue dot with your eyes to relax them.</p>
+  <div id="circle" class="circle"></div>
+  <div id="message"></div>
+
+  <script>
+    let circle = document.getElementById('circle');
+    let message = document.getElementById('message');
+    
+    // Move the circle randomly
+    function moveCircle() {
+      let x = Math.random() * (window.innerWidth - 50);  // 50 is the circle size
+      let y = Math.random() * (window.innerHeight - 50);
+      circle.style.left = x + 'px';
+      circle.style.top = y + 'px';
+    }
+
+    // Move every 2 seconds
+    setInterval(() => {
+      moveCircle();
+    }, 2000);
+
+    // Show relaxing messages periodically
+    let messages = ["Take a deep breath", "Blink your eyes slowly", "Look at something far away"];
+    setInterval(() => {
+      let randomMsg = messages[Math.floor(Math.random() * messages.length)];
+      message.textContent = randomMsg;
+    }, 5000);  // New message every 5 seconds
+  </script>
+</body>
+</html>
